@@ -1,0 +1,6 @@
+.venv/
+googletest/
+*.egg-info/
+tests/
+.idea/
+__pycache__/
