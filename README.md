@@ -1,4 +1,4 @@
-# Autotester 0.1.0
+# Autotester 0.11.0
 
 Autotester — экспериментальный CLI-инструмент для генерации и запуска unit-тестов для C++-функций с помощью Ollama и Google Test.
 
@@ -81,16 +81,7 @@ ollama pull qwen2.5-coder:14b
 В терминале с активированным Python-окружением выполните:
 
 ```bash
-python - <<'PY'
-import ollama
-from autotester.llm_settings import system_prompt
-
-ollama.create(
-    model="test-generator",
-    from_="qwen2.5-coder:14b",
-    system=system_prompt,
-)
-PY
+autotester setup
 ```
 
 Это разовый шаг подготовки модели. Сам CLI модель не создаёт и не передаёт `system_prompt` при каждом запросе; приведённая команда сохраняет инструкции в создаваемой модели.

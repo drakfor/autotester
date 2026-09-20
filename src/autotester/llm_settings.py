@@ -21,18 +21,29 @@ If you generate array, it must be array, not string type.
 """
 
 
-def get_tests(testing_file: Path) -> GeneratedTests:
+def setup_model(model_name: str):
+    logger.info("Preparing model...")
+    ollama.create(
+        model='test-generator',
+        from_=model_name,
+        system=system_prompt
+    )
+    logger.info("Successfully created model: test-generator")
+
+
+def get_tests(testing_file: list[Path]) -> GeneratedTests:
     # ollama.create(
     #     model='test-generator',
     #     from_='qwen2.5-coder:14b',
     #     system=system_prompt
     # )
 
-    test_case: str
+    test_case = ""
 
-    logger.info("Reading test file: %s", testing_file.name)
-    with open(testing_file, "r") as file:
-        test_case = file.read()
+    for file in testing_file:
+        logger.info("Reading test file: %s", file.name)
+        with open(file, "r") as f:
+            test_case += "\n" + f.read()
 
     logger.info("Waiting response...")
     response = ollama.chat(
