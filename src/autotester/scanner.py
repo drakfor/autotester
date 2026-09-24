@@ -41,7 +41,7 @@ def setup_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def get_testing_file(parser: argparse.ArgumentParser) -> list[Path]:
+def get_testing_files(parser: argparse.ArgumentParser) -> list[Path]:
     args = parser.parse_args()
 
     testing_files = [Path(args.file)]

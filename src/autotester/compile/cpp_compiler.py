@@ -12,8 +12,6 @@ class CppCompiler:
     def compile(
         self,
         test_file: str,
-        # solution_file: str,
-        # header_file: str,
         output_file: str = "tests",
     ) -> bool:
 
@@ -46,7 +44,6 @@ class CppCompiler:
     def run(self, executable: str):
         result = subprocess.run(
             [executable],
-            # capture_output=True,   вывод в переменную а не в консоль
             text=True,
             timeout=5
         )
