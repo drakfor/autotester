@@ -1,6 +1,9 @@
 from pathlib import Path
+from dotenv import load_dotenv
 import ollama
 import logging
+import os
+
 
 
 from autotester.format import GeneratedTests
@@ -32,11 +35,6 @@ def setup_model(model_name: str):
 
 
 def get_tests(testing_file: list[Path]) -> GeneratedTests:
-    # ollama.create(
-    #     model='test-generator',
-    #     from_='qwen2.5-coder:14b',
-    #     system=system_prompt
-    # )
 
     test_case = ""
 

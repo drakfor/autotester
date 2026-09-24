@@ -1,4 +1,4 @@
-# Autotester 0.11.0
+# Autotester 0.12.0
 
 Autotester — экспериментальный CLI-инструмент для генерации и запуска unit-тестов для C++-функций с помощью Ollama и Google Test.
 

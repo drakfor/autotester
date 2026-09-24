@@ -2,10 +2,10 @@ import argparse
 from pathlib import Path
 
 
-import argparse
+def get_parser() -> argparse.ArgumentParser:
 
+    # обработка команд от пользователя
 
-def setup_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="autotester",
         description="Automatic test generator"
@@ -16,9 +16,16 @@ def setup_parser() -> argparse.ArgumentParser:
         required=True
     )
 
-    subparsers.add_parser(
+    setup_parser = subparsers.add_parser(
         "setup",
         help="Setup Ollama model"
+    )
+
+    setup_parser.add_argument(
+        "--model",
+        "-M",
+        default=None,
+        help="LLM model name in ollama"
     )
 
     test_parser = subparsers.add_parser(
@@ -41,8 +48,11 @@ def setup_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def get_testing_files(parser: argparse.ArgumentParser) -> list[Path]:
-    args = parser.parse_args()
+def get_testing_files(args) -> list[Path]:
+
+    # аргументы парсинга команд пользователя
+    # передаются в функцию для создания списка файлов-исходников
+    # для тестирования
 
     testing_files = [Path(args.file)]
 
